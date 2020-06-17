@@ -32,6 +32,7 @@ function jsoneditor_validate_prefix_and_key() {
  * @return array
  */
 function jsoneditor_sanitize_json($data) {
+	if(!$data) return [];
 	if(!is_array($data)) wp_send_json(['result' => FALSE, 'error' => 'The JSON data being passed is not valid.']);
 
 	$clean = [];

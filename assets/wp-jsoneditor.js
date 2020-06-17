@@ -37,7 +37,7 @@
 		));
 
 		$(document).on('click', '#jsoneditor-save', () => $.post(
-			ajaxurl, { prefix: prefix(), key: key(), json: editor.get() || [], action: 'jsoneditor_action_save' },
+			ajaxurl, { prefix: prefix(), key: key(), json: editor.get(), action: 'jsoneditor_action_save' },
 			response => jsoneditor_status('save', response),
 			'json'
 		));
