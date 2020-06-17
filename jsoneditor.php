@@ -47,10 +47,12 @@ function jsoneditor_is_valid_json($data) {
  * @return array
  */
 function jsoneditor_sanitize_json($data) {
-	array_walk_recursive($data, function(&$item, $key) {
-		if(is_string($item)) $item = sanitize_text_field($item);
-	});
-	return $data;
+	$clean = [];
+	foreach($data as $key => $value) {
+		$clean_key = sanitize_key($key);
+		$clean_key && $clean[$clean_key] = is_array($value) ? jsoneditor_sanitize_json($value) : sanitize_text_field($value);
+	}
+	return $clean;
 }
 
 function jsoneditor_setup_menu() {
