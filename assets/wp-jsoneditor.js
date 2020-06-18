@@ -7,10 +7,9 @@
 	 * 
 	 * @param {string} type 
 	 * @param {object} response 
-	 * @param {function|undefined} handleSuccess 
-	 * @param {function|undefined} handleError 
+	 * @param {function|undefined} handleSuccess
 	 */
-	const jsoneditor_status = (type, response, handleSuccess, handleError) => {
+	const jsoneditor_status = (type, response, handleSuccess) => {
 		const status = $(`#jsoneditor-${type}-status`).removeClass();
 		const success = response && response.result;
 		const color = success ? 'green' : 'red';
