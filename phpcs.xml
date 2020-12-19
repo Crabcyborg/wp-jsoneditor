@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ruleset name="WP Json Editor">
+	<arg name="extensions" value="php" />
+	<arg value="nsp" />
+	<rule ref="WordPress" />
+</ruleset>

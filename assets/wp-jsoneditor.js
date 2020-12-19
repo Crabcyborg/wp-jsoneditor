@@ -2,6 +2,7 @@
 	const $ = jQuery;
 	const prefix = () => $('#jsoneditor-prefix').val().trim();
 	const key = () => $('#jsoneditor-key').val().trim();
+	const nonce = () => $('#jsoneditor-nonce').val();
 
 	/**
 	 * 
@@ -30,13 +31,13 @@
 		const editor = new JSONEditor(target[0], {});
 
 		$(document).on('click', '#jsoneditor-load', () => $.post(
-			ajaxurl, { prefix: prefix(), key: key(), action: 'jsoneditor_action_load' },
+			ajaxurl, { prefix: prefix(), key: key(), nonce: nonce(), action: 'jsoneditor_action_load' },
 			response => jsoneditor_status('load', response, () => editor.set(response.payload)),
 			'json'
 		));
 
 		$(document).on('click', '#jsoneditor-save', () => $.post(
-			ajaxurl, { prefix: prefix(), key: key(), json: editor.get(), action: 'jsoneditor_action_save' },
+			ajaxurl, { prefix: prefix(), key: key(), nonce: nonce(), json: editor.get(), action: 'jsoneditor_action_save' },
 			response => jsoneditor_status('save', response),
 			'json'
 		));
